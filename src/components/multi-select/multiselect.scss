@@ -91,6 +91,11 @@
             margin-left: 0.5rm;
           }
         }
+        .not-found {
+          @extend %font-shared;
+          color: gray;
+          padding: 0.5rem;
+        }
       }
     }
   }
