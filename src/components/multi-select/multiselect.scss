@@ -75,8 +75,10 @@
       padding: 0.15rem;
       .options {
         display: flex;
+        flex-direction: column;
         padding: 0.5rem 0.2rem;
         button {
+          margin-top: 0.25rem;
           background-color: #dde8ee;
           color: #156b9c;
           border: none;

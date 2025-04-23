@@ -10,7 +10,7 @@ const MultiSelect: FC<MultiSelectProps> = ({
 }) => {
   const [availableOptions, setAvailableOptions] =
     useState<string[]>(initialOptions);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const refDropdown = useRef<HTMLDivElement>(null);
@@ -53,6 +53,10 @@ const MultiSelect: FC<MultiSelectProps> = ({
     // console.log(availableOptions.join(","));
   };
 
+  const filteredOptions = availableOptions.filter((option) =>
+    option.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
   return (
     <div className="dp-container" ref={refDropdown}>
       <button onClick={toggleDropdown}>
@@ -77,12 +81,14 @@ const MultiSelect: FC<MultiSelectProps> = ({
             />
             <div className="scroll-area">
               <div className="options">
-                <Fragment key="">
-                  <button>
-                    Education 🎓
-                    <Icons.check className="check" />
-                  </button>
-                </Fragment>
+                {filteredOptions.map((option) => (
+                  <Fragment key={option}>
+                    <button>
+                      {option}
+                      <Icons.check className="check" />
+                    </button>
+                  </Fragment>
+                ))}
               </div>
             </div>
           </div>
