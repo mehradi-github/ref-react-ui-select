@@ -1,4 +1,4 @@
-import { FC, Fragment, useState } from "react";
+import { FC, Fragment, useRef, useState } from "react";
 import "./multiselect.scss";
 import { Icons } from "../icons";
 
@@ -11,8 +11,11 @@ const MultiSelect: FC<MultiSelectProps> = ({
   const [availableOptions, setAvailableOptions] =
     useState<string[]>(initialOptions);
 
+  const refDropdown = useRef<HTMLDivElement>(null);
+  const refInput = useRef<HTMLInputElement>(null);
+
   return (
-    <div className="dp-container">
+    <div className="dp-container" ref={refDropdown}>
       <button>
         Science
         <Icons.chevronDown className="chevron" />
@@ -21,6 +24,7 @@ const MultiSelect: FC<MultiSelectProps> = ({
       <div className="menu">
         <div className="container">
           <input
+            ref={refInput}
             type="text"
             value=""
             placeholder="Add new item and press Enter..."
