@@ -1,0 +1,5 @@
+@use 'colors' as *;
+
+html[data-theme="light"]{
+    --background: #{$bg-white};
+}
