@@ -12,7 +12,7 @@ function App() {
   ];
   return (
     <div className="select">
-      <MultiSelect options={[]} />
+      <MultiSelect options={options} />
     </div>
   );
 }
