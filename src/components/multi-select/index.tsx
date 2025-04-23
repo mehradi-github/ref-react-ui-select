@@ -12,6 +12,7 @@ const MultiSelect: FC<MultiSelectProps> = ({
     useState<string[]>(initialOptions);
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState<String[]>([]);
 
   const refDropdown = useRef<HTMLDivElement>(null);
   const refInput = useRef<HTMLInputElement>(null);
@@ -57,8 +58,21 @@ const MultiSelect: FC<MultiSelectProps> = ({
     option.toLowerCase().includes(inputValue.toLowerCase())
   );
 
+  const handleOptionSelect = (option: string) => {
+    setSelectedOptions((perv) =>
+      perv.includes(option)
+        ? perv.filter((i) => i !== option)
+        : [...perv, option]
+    );
+  };
   return (
     <div className="dp-container" ref={refDropdown}>
+      {selectedOptions.length > 0 && (
+        <div className="selected">
+          Selected: {"{ "}
+          {selectedOptions.join(", ")} {" }"}
+        </div>
+      )}
       <button onClick={toggleDropdown}>
         Science
         <Icons.chevronDown className="chevron" />
@@ -83,7 +97,7 @@ const MultiSelect: FC<MultiSelectProps> = ({
               <div className="options">
                 {filteredOptions.map((option) => (
                   <Fragment key={option}>
-                    <button>
+                    <button onClick={() => handleOptionSelect(option)}>
                       {option}
                       <Icons.check className="check" />
                     </button>
