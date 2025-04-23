@@ -7,7 +7,7 @@
   position: relative;
   width: 20rem;
   align-items: center;
-  .selected {
+  .selected-options {
     @extend %font-shared;
     margin-bottom: 0.8rem;
   }
@@ -82,8 +82,13 @@
         padding: 0.5rem 0.2rem;
         button {
           margin-top: 0.25rem;
-          background-color: #dde8ee;
-          color: #156b9c;
+
+          background-color: #ffffff;
+          color: gray;
+          &.selected {
+            background-color: #dde8ee !important;
+            color: #156b9c !important;
+          }
           border: none;
           border-radius: 0.5rem;
           box-shadow: none;
