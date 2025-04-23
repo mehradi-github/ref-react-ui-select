@@ -68,7 +68,7 @@ const MultiSelect: FC<MultiSelectProps> = ({
   return (
     <div className="dp-container" ref={refDropdown}>
       {selectedOptions.length > 0 && (
-        <div className="selected">
+        <div className="selected-options">
           Selected: {"{ "}
           {selectedOptions.join(", ")} {" }"}
         </div>
@@ -95,14 +95,20 @@ const MultiSelect: FC<MultiSelectProps> = ({
             />
             <div className="scroll-area">
               <div className="options">
-                {filteredOptions.map((option) => (
-                  <Fragment key={option}>
-                    <button onClick={() => handleOptionSelect(option)}>
-                      {option}
-                      <Icons.check className="check" />
-                    </button>
-                  </Fragment>
-                ))}
+                {filteredOptions.map((option) => {
+                  const isSelected = selectedOptions.includes(option);
+                  return (
+                    <Fragment key={option}>
+                      <button
+                        className={isSelected ? "selected" : ""}
+                        onClick={() => handleOptionSelect(option)}
+                      >
+                        {option}
+                        {isSelected && <Icons.check className="check" />}
+                      </button>
+                    </Fragment>
+                  );
+                })}
                 {filteredOptions.length === 0 && (
                   <p className="not-found">
                     No options found. Add new item to create options.
