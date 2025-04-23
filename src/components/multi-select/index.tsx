@@ -11,6 +11,7 @@ const MultiSelect: FC<MultiSelectProps> = ({
   const [availableOptions, setAvailableOptions] =
     useState<string[]>(initialOptions);
   const [isOpen, setIsOpen] = useState(true);
+  const [inputValue, setInputValue] = useState("");
 
   const refDropdown = useRef<HTMLDivElement>(null);
   const refInput = useRef<HTMLInputElement>(null);
@@ -43,6 +44,15 @@ const MultiSelect: FC<MultiSelectProps> = ({
     console.log(isOpen);
   }, [isOpen]);
 
+  const handleAddNewItem = () => {
+    const v = inputValue.trim();
+    if (v !== "" && !availableOptions.includes(v)) {
+      setAvailableOptions((perv) => [...perv, v]);
+      setInputValue("");
+    }
+    // console.log(availableOptions.join(","));
+  };
+
   return (
     <div className="dp-container" ref={refDropdown}>
       <button onClick={toggleDropdown}>
@@ -56,8 +66,13 @@ const MultiSelect: FC<MultiSelectProps> = ({
             <input
               ref={refInput}
               type="text"
-              value=""
-              onChange={() => {}}
+              value={inputValue}
+              onChange={(e) => {
+                setInputValue(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleAddNewItem();
+              }}
               placeholder="Add new item and press Enter..."
             />
             <div className="scroll-area">
