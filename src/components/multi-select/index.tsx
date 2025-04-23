@@ -8,8 +8,8 @@ interface MultiSelectProps {
 const MultiSelect: FC<MultiSelectProps> = ({
   options: initialOptions = [],
 }) => {
-  // const [availableOptions, setAvailableOptions] =
-  //   useState<string[]>(initialOptions);
+  const [availableOptions, setAvailableOptions] =
+    useState<string[]>(initialOptions);
   const [isOpen, setIsOpen] = useState(true);
 
   const refDropdown = useRef<HTMLDivElement>(null);
