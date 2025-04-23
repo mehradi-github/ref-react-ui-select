@@ -89,6 +89,11 @@ const MultiSelect: FC<MultiSelectProps> = ({
                     </button>
                   </Fragment>
                 ))}
+                {filteredOptions.length === 0 && (
+                  <p className="not-found">
+                    No options found. Add new item to create options.
+                  </p>
+                )}
               </div>
             </div>
           </div>
