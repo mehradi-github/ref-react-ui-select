@@ -1,36 +1,95 @@
+%font-shared {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.dp-container {
+  //   display: flex;
+  position: relative;
+  width: 20rem;
+  align-items: center;
 
-.dp-container{
-    display: flex;
-    position: relative;
-    width: 20rem;
-    button{
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8rem;
-        white-space: nowrap;
-        border-radius: 0.8rem;
-        font-size: 0.875rem;
-        font-weight: 500;
-        box-shadow: 0 0 5px 2px rgb(124, 174, 194) ;
-        color: gray;
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    white-space: nowrap;
+    border-radius: 0.8rem;
+    @extend %font-shared;
+    box-shadow: 0 0 5px 2px rgb(124, 174, 194);
+    color: gray;
+    padding: 0.75rem;
 
-        // transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-        // transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        // transition-duration: 150ms;
+    // transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    // transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    // transition-duration: 150ms;
 
-        // outline: 2px solid transparent;
-        // outline-offset: 2px;
-        pointer-events: none;
-        border-color: rgb(25, 128, 187);
-        width: 100%;
-        justify-content: space-between;
-        
+    // outline: 2px solid transparent;
+    // outline-offset: 2px;
+    pointer-events: none;
+    border-color: rgb(25, 128, 187);
+    width: 100%;
+    justify-content: space-between;
 
-        .chevron{
-            height: 1rem;
-            width: 1rem;
-            opacity: 0.5;
-            flex-shrink: 0;
-        }
+    .chevron {
+      height: 1rem;
+      width: 1rem;
+      opacity: 0.5;
+      flex-shrink: 0;
     }
+  }
+
+  .menu {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    margin-top: 0.35rem;
+    border-radius: 0.8rem;
+    border: 1px solid gray;
+    background-color: white;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 0.5rem;
+    }
+    input {
+      height: 1.5rem;
+      width: 90%;
+      //   border-bottom: solid 0.02rem gray !important;
+      border: none;
+      border-radius: none;
+      padding: 0.2rem 0.5rem;
+      @extend %font-shared;
+      line-height: 1.5rem;
+      &:focus {
+        border: none !important;
+      }
+    }
+    .scroll-area {
+      max-height: 15rem;
+      overflow-y: auto;
+      scrollbar-color: gray white;
+      scrollbar-width: thin;
+      width: 100%;
+      padding: 0.15rem;
+      .options {
+        display: flex;
+        padding: 0.5rem 0.2rem;
+        button {
+          background-color: #dde8ee;
+          color: #156b9c;
+          border: none;
+          border-radius: 0.5rem;
+          box-shadow: none;
+          @extend %font-shared;
+          .check {
+            width: 1rem;
+            height: 1rem;
+            margin-left: 0.5rm;
+          }
+        }
+      }
+    }
+  }
 }
