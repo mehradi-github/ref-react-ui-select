@@ -1,9 +1,16 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useState } from "react";
 import "./multiselect.scss";
 import { Icons } from "../icons";
 
-interface MultiSelectProps {}
-const MultiSelect: FC<MultiSelectProps> = ({}) => {
+interface MultiSelectProps {
+  options?: string[];
+}
+const MultiSelect: FC<MultiSelectProps> = ({
+  options: initialOptions = [],
+}) => {
+  const [availableOptions, setAvailableOptions] =
+    useState<string[]>(initialOptions);
+
   return (
     <div className="dp-container">
       <button>
